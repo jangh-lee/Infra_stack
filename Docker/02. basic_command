@@ -1,0 +1,67 @@
+docker ps
+
+docker ps -a
+모든 컨테이너 정보 확인 (종료된 컨테이너도 확인가능)
+
+docker run nginx (이미지 실행함)
+ -> docker pull 을 포함함
+
+docker create [image]
+
+docker search
+
+
+docker push
+
+docker start [container NAME or ID]
+
+
+
+docker run \
+-i # 호스트의 표준 입력을 컨테이너의 표준 입력으로 연결 (interactive)
+      어플리케이션에서 입력이 필요하면 호스트에서 입력한 값을 전달해서 사용함
+- t # 컨테이너에 TTY에 할당해, 터미널 명령어 수행을 정상적으로 이용하는 옵션임
+    # shell 실행시 많이 쓰임
+
+--rm # 컨테이너가 종료되면 바로 삭제시킴
+-d # (daemon)으로 실행하기 때문에 백그라운드 모드로 실행 (detached)
+--name  # 컨테이너 이름 지정
+-p # 호스트 -컨테이너 간 포트 바인딩
+-v # 호스트-컨테이너 간 볼륨 바인딩
+# 실행이미지
+# 컨테이너 내에서 실행시킬 명령어
+
+
+# 참고 ctrl + p, q를 통해서 실행시키면서 빠져나올 수 있다.
+기본적으로 foreground에서 실행 > 내 cmd 창은 계속 컨테이너 실행상태로 존재
+ubuntu: 이미지는 interactive 이기 때문에 bash 쉘의 입력을 받는 형태로 진행됨
+
+
+
+docker inspect [container]를 통해서 컨테이너 상세 정보 확인 가능
+
+docker pause/unpause 를 통해서 이미지를 일시 중지할 수 있다.
+
+
+docker stop # 컨테이너 종료 (sigterm 시그널 전달)
+
+docker kill container 컨테이너 강제 종료 (sigkill 시그널 전달)
+
+docker stop $(docker ps -a -q) 모든 컨테이너 종료하기
+
+
+
+
+컨테이너 삭제
+컨테이너 삭제 (실행중인 컨테이너 불가)
+ docker rm [container]
+
+컨테이너 강제 종료 후 삭제 (sigkill 시그널 전달)
+docker rm -f [container]
+
+컨테이너 실행 종료 후 자동 삭제
+docker run --rm 
+
+중지된 모든 컨테이너 삭제
+docker container prune
+
